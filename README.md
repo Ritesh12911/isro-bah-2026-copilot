@@ -1,5 +1,7 @@
 # AetherNOC // Secure Predictive MPLS Copilot
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://isro-bah-2026-copilot-wgynwswuwwyt6yjnhbsnbo.streamlit.app/)
+
 Developed by **Team Pathfinders** for the **Bharatiya Antariksh Hackathon (ISRO BAH) 2026**.
 
 AetherNOC is a high-fidelity, interactive, and visually stunning Network Operations Center (NOC) dashboard prototype. It demonstrates proactive fault forecasting under absolute air-gap isolation for secure MPLS network operations.
