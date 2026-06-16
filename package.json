@@ -1,0 +1,14 @@
+{
+  "name": "isro-bah-2026-copilot",
+  "version": "1.0.0",
+  "description": "AetherNOC - Secure Predictive MPLS Copilot Prototype",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

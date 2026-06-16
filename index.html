@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AetherNOC // Secure Predictive MPLS Copilot - Team Pathfinders</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Air-Gap Secure Perimeter Glow Border -->
+  <div class="secure-perimeter-border"></div>
+
+  <div class="app-container">
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="logo-container">
+          <!-- Styled Vector Space Rocket / ISRO Tribute Logo -->
+          <svg class="isro-logo" viewBox="0 0 50 50">
+            <path d="M25 5 L30 18 L45 22 L32 26 L35 40 L25 32 L15 40 L18 26 L5 22 L20 18 Z" fill="none" stroke="#ff5e00" stroke-width="2"/>
+            <path d="M25 2 L25 45" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="2 2"/>
+            <circle cx="25" cy="22" r="6" fill="none" stroke="#ff9d00" stroke-width="1.5"/>
+          </svg>
+          <div class="logo-text">
+            <span class="logo-main">BHARATIYA ANTARIKSH HACKATHON 2026</span>
+            <span class="logo-sub">PROBLEM: AIR-GAPPED SECURE MPLS OPERATIONS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <div class="copilot-badge">
+          <span class="pulse-dot"></span>
+          AETHERNOC // PREDICTIVE COPILOT
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="team-badge">
+          <span class="label">TEAM:</span>
+          <span class="value">PATHFINDERS</span>
+        </div>
+        <div class="system-status air-gapped">
+          <svg class="lock-icon" viewBox="0 0 24 24" width="16" height="16">
+            <rect x="3" y="11" width="18" height="11" rx="2" fill="none" stroke="#00f0ff" stroke-width="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" fill="none" stroke="#00f0ff" stroke-width="2"/>
+          </svg>
+          <span>100% AIR-GAPPED ZONE</span>
+        </div>
+        <div id="live-clock" class="live-clock">20:33:09 UTC</div>
+      </div>
+    </header>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="dashboard-grid">
+      
+      <!-- COLUMN 1: TOPOLOGY & FAULT INJECTION -->
+      <section class="grid-col col-topology">
+        <!-- Panel 1: Network Topology Map -->
+        <div class="dashboard-panel topology-panel">
+          <div class="panel-header">
+            <h3><span class="panel-icon">🌐</span> LIVE NETWORK TOPOLOGY</h3>
+            <span class="panel-tag">ACTIVE SIMULATION</span>
+          </div>
+          <div class="panel-body topology-wrapper">
+            <svg class="topology-svg" id="topologyMap" viewBox="0 0 400 320">
+              <!-- Grid Background lines for tech look -->
+              <defs>
+                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0, 240, 255, 0.03)" stroke-width="1"/>
+                </pattern>
+                <linearGradient id="link-grad-healthy" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00ff88" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.8"/>
+                </linearGradient>
+                <linearGradient id="link-grad-warning" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff9d00" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#ff5e00" stop-opacity="0.8"/>
+                </linearGradient>
+                <linearGradient id="link-grad-error" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff3333" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#ff0055" stop-opacity="0.8"/>
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid)" />
+
+              <!-- Links (Lines) -->
+              <line id="link-hub-dc" class="topo-link link-healthy" x1="200" y1="60" x2="200" y2="250" />
+              <line id="link-east-hub" class="topo-link link-healthy" x1="70" y1="150" x2="200" y2="60" />
+              <line id="link-west-hub" class="topo-link link-healthy" x1="330" y1="150" x2="200" y2="60" />
+              <line id="link-east-dc" class="topo-link link-healthy" x1="70" y1="150" x2="200" y2="250" />
+              <line id="link-west-dc" class="topo-link link-healthy" x1="330" y1="150" x2="200" y2="250" />
+
+              <!-- Links flow animation overlay -->
+              <line id="flow-hub-dc" class="topo-flow" x1="200" y1="60" x2="200" y2="250" />
+              <line id="flow-east-hub" class="topo-flow" x1="70" y1="150" x2="200" y2="60" />
+              <line id="flow-west-hub" class="topo-flow" x1="330" y1="150" x2="200" y2="60" />
+              <line id="flow-east-dc" class="topo-flow" x1="70" y1="150" x2="200" y2="250" />
+              <line id="flow-west-dc" class="topo-flow" x1="330" y1="150" x2="200" y2="250" />
+
+              <!-- Node: MAIN HUB (Center Top) -->
+              <g id="node-hub" class="topo-node" transform="translate(200, 60)">
+                <circle class="node-glow" r="22" />
+                <circle class="node-bg" r="16" />
+                <circle id="status-hub" class="node-status status-green" r="5" cy="-8" />
+                <text class="node-icon" y="4">🖧</text>
+                <text class="node-label" y="28">MAIN-HUB</text>
+              </g>
+
+              <!-- Node: EAST BRANCH (Left) -->
+              <g id="node-east" class="topo-node" transform="translate(70, 150)">
+                <circle class="node-glow" r="22" />
+                <circle class="node-bg" r="16" />
+                <circle id="status-east" class="node-status status-green" r="5" cy="-8" />
+                <text class="node-icon" y="4">🏬</text>
+                <text class="node-label" y="28">BR-EAST</text>
+              </g>
+
+              <!-- Node: WEST BRANCH (Right) -->
+              <g id="node-west" class="topo-node" transform="translate(330, 150)">
+                <circle class="node-glow" r="22" />
+                <circle class="node-bg" r="16" />
+                <circle id="status-west" class="node-status status-green" r="5" cy="-8" />
+                <text class="node-icon" y="4">🏬</text>
+                <text class="node-label" y="28">BR-WEST</text>
+              </g>
+
+              <!-- Node: HQ DATACENTER (Center Bottom) -->
+              <g id="node-dc" class="topo-node" transform="translate(200, 250)">
+                <circle class="node-glow" r="25" />
+                <circle class="node-bg" r="19" />
+                <circle id="status-dc" class="node-status status-green" r="5" cy="-10" />
+                <text class="node-icon" y="5" style="font-size: 16px;">💾</text>
+                <text class="node-label" y="32">HQ-DATACENTER</text>
+              </g>
+            </svg>
+            <div class="topology-legend">
+              <span class="legend-item"><span class="dot green"></span> Healthy</span>
+              <span class="legend-item"><span class="dot orange"></span> Predictive Warning</span>
+              <span class="legend-item"><span class="dot red"></span> Outage</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Fault Injection Console -->
+        <div class="dashboard-panel fault-panel">
+          <div class="panel-header">
+            <h3><span class="panel-icon">⚡</span> PROGRAMMATIC FAULT INJECTOR</h3>
+            <span class="panel-tag caution">SECURE TELEMETRY MANIPULATION</span>
+          </div>
+          <div class="panel-body">
+            <div class="control-group">
+              <div class="control-label">
+                <span>Tunnel Decay (BR-WEST IPSec)</span>
+                <span id="val-tunnel-decay" class="val-display text-green">0%</span>
+              </div>
+              <input type="range" id="slider-tunnel-decay" min="0" max="100" value="0" class="tech-slider">
+              <div class="helper-text">Simulates gradual IPSec path degradation and crypto-key latency buildup.</div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>OSPF Link Flaps (MAIN-HUB Route)</span>
+                <span id="val-ospf-flap" class="val-display text-green">Stable</span>
+              </div>
+              <div class="switch-container">
+                <label class="tech-switch">
+                  <input type="checkbox" id="switch-ospf-flap">
+                  <span class="switch-slider"></span>
+                </label>
+                <span class="switch-label">Inject OSPF flapping updates</span>
+              </div>
+              <div class="helper-text">Forces continuous route reconvergences and router CPU load spikes.</div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>Bandwidth Congestion (BR-EAST MPLS)</span>
+                <span id="val-congestion" class="val-display text-green">12%</span>
+              </div>
+              <input type="range" id="slider-congestion" min="5" max="100" value="12" class="tech-slider">
+              <div class="helper-text">Pushes simulated syslog buffers to max, triggering packet loss metrics.</div>
+            </div>
+
+            <div class="action-buttons">
+              <button id="btn-inject-solar" class="tech-button warn">Inject Solar Flare / EMI</button>
+              <button id="btn-reset-network" class="tech-button success">Reset Network to Baseline</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUMN 2: PREDICTIVE ANALYTICS & TELEMETRY -->
+      <section class="grid-col col-analytics">
+        <!-- Panel 3: Anomaly Predictor -->
+        <div class="dashboard-panel analytics-panel">
+          <div class="panel-header">
+            <h3><span class="panel-icon">🔮</span> PREDICTIVE FAULT ANALYTICS</h3>
+            <span class="panel-tag highlight">SCIKIT-LEARN LSTM ENGINE</span>
+          </div>
+          <div class="panel-body center-flex">
+            <div class="gauge-container">
+              <svg class="gauge-svg" viewBox="0 0 200 120">
+                <!-- Gauge Arc Background -->
+                <path d="M20,100 A80,80 0 0,1 180,100" fill="none" stroke="#112233" stroke-width="12" stroke-linecap="round" />
+                <!-- Gauge Arc Glow -->
+                <path id="gauge-fill-glow" d="M20,100 A80,80 0 0,1 180,100" fill="none" stroke="transparent" stroke-width="12" stroke-linecap="round" />
+                <!-- Gauge Arc Fill -->
+                <path id="gauge-fill" d="M20,100 A80,80 0 0,1 20,100" fill="none" stroke="#00f0ff" stroke-width="12" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251" />
+                <!-- Value Display -->
+                <text x="100" y="95" class="gauge-val" id="gaugeScore">0%</text>
+                <text x="100" y="115" class="gauge-lbl">ANOMALY SCORE</text>
+              </svg>
+            </div>
+
+            <div class="prediction-info">
+              <div class="info-row">
+                <span class="lbl">Threat Level:</span>
+                <span id="threatLevel" class="val text-green">NOMINAL</span>
+              </div>
+              <div class="info-row">
+                <span class="lbl">Precursor Match:</span>
+                <span id="precursorMatch" class="val text-gray">None Detected</span>
+              </div>
+              <div class="info-row">
+                <span class="lbl">Est. Time to Failure:</span>
+                <span id="estFailureTime" class="val text-green font-mono">STABLE (N/A)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 4: Live Telemetry Charts -->
+        <div class="dashboard-panel charts-panel">
+          <div class="panel-header">
+            <h3><span class="panel-icon">📊</span> MULTIVARIATE TELEMETRY STREAM</h3>
+            <span class="panel-tag">REAL-TIME SYSLOG INGESTION</span>
+          </div>
+          <div class="panel-body">
+            <!-- Latency Chart -->
+            <div class="chart-container">
+              <div class="chart-label">
+                <span>Link Latency Trend</span>
+                <span id="chart-val-latency" class="chart-val">24 ms</span>
+              </div>
+              <canvas id="chartLatency" width="340" height="75"></canvas>
+            </div>
+
+            <!-- Packet Loss Chart -->
+            <div class="chart-container">
+              <div class="chart-label">
+                <span>Packet Loss Rate</span>
+                <span id="chart-val-loss" class="chart-val">0.00%</span>
+              </div>
+              <canvas id="chartLoss" width="340" height="75"></canvas>
+            </div>
+
+            <!-- Anomaly History Chart -->
+            <div class="chart-container">
+              <div class="chart-label">
+                <span>Predictive Anomaly Index</span>
+                <span id="chart-val-anomaly" class="chart-val">0.02</span>
+              </div>
+              <canvas id="chartAnomaly" width="340" height="75"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUMN 3: AI COPILOT & WORKFLOW AUTOMATION -->
+      <section class="grid-col col-copilot">
+        <!-- Panel 5: AI Copilot Console -->
+        <div class="dashboard-panel copilot-panel">
+          <div class="panel-header">
+            <h3><span class="panel-icon">🤖</span> AI TERMINAL COPILOT (QWEN-2.5-CODER)</h3>
+            <span class="panel-tag secure-perimeter">LOCAL INSTANCE</span>
+          </div>
+          <div class="panel-body copilot-body">
+            <!-- Prioritized Alerts Feed -->
+            <div class="alerts-feed">
+              <div class="section-title">PRIORITIZED ACTIVE PRECURSORS</div>
+              <div id="alerts-list" class="alerts-list">
+                <!-- Dynamically populated alerts -->
+                <div class="empty-alerts">System clean. Monitoring logs...</div>
+              </div>
+            </div>
+
+            <!-- RAG Context Window -->
+            <div class="rag-context-box">
+              <div class="section-title">LOCAL RAG MATCHED PLAYBOOK</div>
+              <div id="playbook-view" class="playbook-view">
+                <div class="empty-playbook">No active issues. Runbook database idling.</div>
+              </div>
+            </div>
+
+            <!-- Interactive Terminal Emulator -->
+            <div class="terminal-emulator">
+              <div class="terminal-header">
+                <span class="terminal-title">NOC SECURE TERMINAL (127.0.0.1)</span>
+                <div class="terminal-controls">
+                  <span class="control-dot red"></span>
+                  <span class="control-dot yellow"></span>
+                  <span class="control-dot green"></span>
+                </div>
+              </div>
+              <div id="terminal-output" class="terminal-output">
+AetherNOC Terminal Console [Version 1.42.2026]
+(c) 2026 Team Pathfinders. Secure Air-Gapped Session.
+
+Ready. Type 'help' for available diagnostic commands.
+router# █
+              </div>
+              <div class="terminal-input-row">
+                <span class="prompt">router#</span>
+                <input type="text" id="terminal-input" placeholder="Type diagnostic commands here..." autocomplete="off">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
