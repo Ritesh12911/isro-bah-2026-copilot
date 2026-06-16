@@ -33,21 +33,30 @@ Traditional NOC utilities suffer from **reactive detection**—triggering alarms
 
 ```
 isro-bah-2026-copilot/
-├── index.html     # Semantic dashboard structure & inline SVG topology assets
-├── styles.css     # Design tokens, keyframe animations, and styling guidelines
-├── app.js         # Interactive simulation loop, telemetry models, and terminal CLI
-└── README.md      # Repository documentation
+├── index.html          # Semantic dashboard structure & inline SVG topology assets
+├── styles.css          # Design tokens, keyframe animations, and styling guidelines
+├── app.js              # Interactive simulation loop, telemetry models, and terminal CLI
+├── streamlit_app.py    # Streamlit wrapper to serve/deploy the application
+├── requirements.txt    # Streamlit python dependencies
+└── README.md           # Repository documentation
 ```
 
 ---
 
 ## ⚡ How to Run
 
-AetherNOC is designed with a zero-dependency static file architecture, ensuring 100% compatibility in air-gapped workstations.
+### Option A: Pure Static Web (Zero Dependencies)
+Ideal for 100% air-gapped engineering workstations with zero python setup:
+1. Double-click [index.html](file:///C:/Users/HP/.gemini/antigravity-ide/scratch/isro-bah-2026-copilot/index.html) or drag it into any modern browser (Chrome, Edge, Firefox, Safari).
 
-1. Clone this repository:
+### Option B: Streamlit Framework
+For hosting locally or deploying live to the **Streamlit Community Cloud**:
+1. Install requirements:
    ```bash
-   git clone <your-repository-url>
+   pip install -r requirements.txt
    ```
-2. Navigate to the project folder and double-click `index.html` (or open it using Google Chrome, Microsoft Edge, Firefox, or Safari).
-3. Interact with the **Fault Injector** to see the system predict failures in real-time, generate automated RAG runbooks, and test diagnostic mitigation commands!
+2. Run locally:
+   ```bash
+   streamlit run streamlit_app.py
+   ```
+3. Deploy to the cloud: push this repository to GitHub, go to [Streamlit Share](https://share.streamlit.io/), and link the repository. It will automatically detect `streamlit_app.py` and run it live!
